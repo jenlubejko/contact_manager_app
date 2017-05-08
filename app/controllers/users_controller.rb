@@ -1,3 +1,5 @@
+class UsersController < ApplicationController
+
   def new
     render 'new.html.erb'
   end
@@ -18,3 +20,4 @@
       redirect_to '/signup'
     end
   end
+end

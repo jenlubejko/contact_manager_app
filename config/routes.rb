@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :addresses
-  resources :phones
-  resources :contacts
+  get '/' => 'contacts#index'
 
   get "/signup" => "users#new"
   post "/users" => "users#create"
@@ -10,4 +8,7 @@ Rails.application.routes.draw do
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy"
 
+  resources :addresses
+  resources :phones
+  resources :contacts
 end

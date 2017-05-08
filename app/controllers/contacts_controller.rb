@@ -4,7 +4,13 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    if current_user
+      @contacts = current_user.contacts
+      render 'index.html.erb'
+    else
+      flash[:warning] = 'You must be logged in to see this page!'
+      redirect_to '/login'
+    end
   end
 
   # GET /contacts/1
@@ -69,6 +75,6 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:name, :company, :favorite, :smallImageURL, :largeImageURL, :email, :website, :birthdate)
+      params.require(:contact).permit(:name, :company, :favorite, :smallImageURL, :largeImageURL, :email, :website, :birthdate, :user_id)
     end
 end
