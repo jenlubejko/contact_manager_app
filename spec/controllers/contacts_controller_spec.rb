@@ -23,12 +23,12 @@ RSpec.describe ContactsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Contact. As you add validations to Contact, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+   let(:valid_attributes) {
+    { name: 'Essie' }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: nil }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +103,14 @@ RSpec.describe ContactsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {name: 'Essie'}
       }
 
       it "updates the requested contact" do
         contact = Contact.create! valid_attributes
         put :update, params: {id: contact.to_param, contact: new_attributes}, session: valid_session
         contact.reload
-        skip("Add assertions for updated state")
+        expect(contact.name).to eq('NewName')
       end
 
       it "assigns the requested contact as @contact" do
