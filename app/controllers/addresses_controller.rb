@@ -11,7 +11,7 @@ class AddressesController < ApplicationController
   # GET /addresses/1.json
   def show
     @address = Address.find_by(id: params[:contact_id])
-    redirect_to '/contacts'
+    redirect_to "/contacts/"
   end
 
   # GET /addresses/new

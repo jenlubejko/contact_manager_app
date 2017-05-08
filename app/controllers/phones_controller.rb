@@ -11,7 +11,7 @@ class PhonesController < ApplicationController
   # GET /phones/1.json
   def show
     @phone = Phone.find_by(id: params[:contact_id])
-    redirect_to '/contacts'
+    redirect_to "/contacts/"
   end
 
   # GET /phones/new
