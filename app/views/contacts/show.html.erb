@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @contact.name %></h1>
+
 <p>
   <strong>Name:</strong>
   <%= @contact.name %>
@@ -40,5 +42,34 @@
   <%= @contact.birthdate %>
 </p>
 
+<p><strong>Phone:</strong></p>
+<ul>
+<% @contact.phones.each do |phone| %>
+    <li>Work: <%= phone.work %></li>
+    <li>Home: <%= phone.home %></li>
+    <li>Mobile: <%= phone.mobile %></li>
+  <% end %>
+</ul>
+
+<p><strong>Address:</strong></p>
+<ul>
+<% @contact.addresses.each do |address| %>
+    <li>Street: <%= address.street %></li>
+    <li>City: <%= address.city %></li>
+    <li>State: <%= address.state %></li>
+    <li>Country: <%= address.country %></li>
+    <li>Zip: <%= address.zip %></li>
+    <li>Latitude: <%= address.latitude %></li>
+    <li>Longitude: <%= address.longitude %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+
+<%= link_to 'Back', contacts_path %> |
+
+<%= link_to 'Destroy', @contact, method: :delete, data: { confirm: 'Are you sure?' } %> |
+
+<%= link_to 'Add a phone number', new_phone_path(contact_id: @contact.id) %> |
+
+<%= link_to 'Add an address', new_address_path(contact_id: @contact.id) %> 
