@@ -10,11 +10,13 @@ class PhonesController < ApplicationController
   # GET /phones/1
   # GET /phones/1.json
   def show
+    @phone = Phone.find_by(id: params[:contact_id])
+    redirect_to '/contacts'
   end
 
   # GET /phones/new
   def new
-    @phone = Phone.new
+    @phone = Phone.new(contact_id: params[:contact_id])
   end
 
   # GET /phones/1/edit
